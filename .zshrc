@@ -138,9 +138,7 @@ gdelme() {
 syncrc() {
 	cp ~/.zshrc ~/dotfiles/;
 	cd ~/dotfiles/;
-	git add .;
-	git commit -m "sync zshrc";
-	git push;
+	gall "sync zshrc";
 	cd -;
 }
 ### DOWNLOAD MANAGERS I HAVE: homebrew (brew), curl, no apt-get 
