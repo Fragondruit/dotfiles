@@ -95,7 +95,7 @@ fcd() {
 }
 
 fkit() {
-	echo -e "\e[1;31mSave a diff file to restore/preview these changes?\b\e[0m";
+	echo_red "Save a diff file to restore/preview these changes?";
 	read inp;
 	if [[ $inp = "y" ]]; then
 		local stash_preview_file="$(currb)-$(date +'%s')"; 
@@ -106,11 +106,16 @@ fkit() {
 	git stash drop;
 }
 
+echo_red() {
+    echo -e "\e[1;31m$@\b\e[0m"
+}
+
 ## deletes the current branch gracefully.
 gdelme() {
 	local curr_branch=$(currb);
 	if [[ "$curr_branch" = "main" ]]; then
-		echo -e "\e[1;31mCannot delete main. \b\e[0m"; return;
+		echo_red Cannot delete main.; 
+		return;
 	fi
 
 	git checkout main;
@@ -130,6 +135,14 @@ gdelme() {
 	git branch -D $curr_branch;
 }
 
+syncrc() {
+	cp ~/.zshrc ~/dotfiles/;
+	cd ~/dotfiles/;
+	git add .;
+	git commit -m "sync zshrc";
+	git push;
+	cd -;
+}
 ### DOWNLOAD MANAGERS I HAVE: homebrew (brew), curl, no apt-get 
 
 alias code="~/Downloads/'Visual Studio Code.app'/Contents/Resources/app/bin/code"
