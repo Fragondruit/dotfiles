@@ -6,6 +6,10 @@ export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 alias crun='cargo -q run'
 alias l='ls --color=always'
 alias ll='l -la'
+alias cdit='cd $(history -1 | hor 5)'
+alias catit='cat $(history -1 | hor 5)'
+alias vimit='vim $(history -1 | hor 5)'
+alias lsit='ls $(history -1 | hor 5)'
 
 alias f='2> /dev/null find / -name '
 alias fd='2> /dev/null find / -type d -name '
@@ -32,7 +36,7 @@ alias gc='git checkout'
 alias gcm='gc main'
 alias gpom='git pull origin main'
 alias gull='git pull'
-alias gush='git push'
+alias gush='git push -u origin $(currb)'
 alias ga='git add'
 alias gcom='git commit -m'
 alias gcam='git commit -am'
@@ -45,6 +49,8 @@ alias currb='git branch --show-current | tee >(pbcopy)'
 alias glog='git log | grep "[ ]{4}" | ungrep "^[ ]+$" | hn'
 alias glogv='git log | hn'
 alias ginitcom='gall "Initial commit"'
+alias gpot='git push origin --tags'
+alias gash='git stash'
 alias cb='pbcopy'
 
 alias xn='xargs -n1'
@@ -145,3 +151,6 @@ syncrc() {
 ### DOWNLOAD MANAGERS I HAVE: homebrew (brew), curl, no apt-get 
 
 alias code="~/Downloads/'Visual Studio Code.app'/Contents/Resources/app/bin/code"
+alias act="source bin/activate"
+alias dact="deactivate"
+alias venv="python3 -m venv .venv"
