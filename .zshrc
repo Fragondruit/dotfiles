@@ -19,6 +19,7 @@ alias fgits='2>/dev/null find ~ -type d -maxdepth 3 -name .git'
 alias ffiles='find . -type f -maxdepth'
 alias fdirs='find . -type d -maxdepth'
 alias fexe='2> /dev/null find . -type f -perm +111'
+alias qf='2>/dev/null bfs -maxdepth 4 -name'
 
 alias grep='grep -E --color=always'
 alias rgrep='grep -r'
