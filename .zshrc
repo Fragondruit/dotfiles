@@ -50,6 +50,7 @@ alias currb='git branch --show-current | tee >(pbcopy)'
 alias glog='git log | grep "[ ]{4}" | ungrep "^[ ]+$" | hn'
 alias glogv='git log | hn'
 alias ginitcom='gall "Initial commit"'
+alias gminor='gall Minor'
 alias gpot='git push origin --tags'
 alias gash='git stash'
 alias cb='pbcopy'
@@ -149,6 +150,26 @@ syncrc() {
 	gall "sync zshrc";
 	cd -;
 }
+
+editrc() {
+	pgrep -liq 'cursor';
+	if [ $? -eq 0 ]; then
+		cursor ~/.zshrc;
+		return;
+	fi
+
+	pgrep -liq 'code';
+	if [ $? -eq 0 ]; then
+		code ~/.zshrc;
+		return;
+	fi
+
+	vim ~/.zshrc;
+}
+
+### Arcihve
+xiv() { cp "$1" ~/tmp/; }
+
 ### DOWNLOAD MANAGERS I HAVE: homebrew (brew), curl, no apt-get 
 
 alias code="~/Downloads/'Visual Studio Code.app'/Contents/Resources/app/bin/code"
