@@ -87,17 +87,11 @@ gall() {
 alias _getdir="rev | cut -d'/' -f 2-99 | rev"
 fcd() {
 	local regex="$1";
-	local out=$(ffiles 8 2>/dev/null | grep $regex | _getdir);
-	echo $out;
+	local out=$(2>/dev/null bfs -maxdepth 8 -name $regex | head -n 1);
 
 	if [ -z $out ]; then
-		out=$(fdirs 8 2>/dev/null | grep $regex);
-		echo $out;
-	fi
-
-	if [ -z $out ]; then 
 		echo "No Matches for $regex" >&2; 
-		return;
+		return 1;
 	fi
 
 	cd $out;
