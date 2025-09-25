@@ -1,4 +1,5 @@
-autoload -U colors && colors
+autoload -U colors && colors;
+autoload -Uz compinit && compinit;
 PS1="%{$fg[yellow]%}%n%{$reset_color%}@%{$fg[yellow]%}🦬 %{$fg[yellow]%}%(5~|%-1~/.../%3~|%4~) %{$reset_color%}$ "
 
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
@@ -170,3 +171,4 @@ alias code="~/Downloads/'Visual Studio Code.app'/Contents/Resources/app/bin/code
 alias act="source bin/activate"
 alias dact="deactivate"
 alias venv="python3 -m venv .venv"
+alias cdro="cd ~/dev/RoameraApp/"
